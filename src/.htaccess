@@ -1,0 +1,14 @@
+order deny,allow
+deny from all
+
+allow from 31.221.0.67
+allow from 31.221.0.68
+allow from 31.221.0.69
+allow from 31.221.0.81
+allow from 31.221.0.85
+
+allow from localhost
+
+Satisfy Any
+ErrorDocument 503 /503.html
+ErrorDocument 300 /404

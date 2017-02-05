@@ -1,0 +1,52 @@
+<div class="comments">
+
+    <form data-comment-form>
+        
+        <div class="form-group name">
+            <!--<label for="name"><h1 class="question-title">Name</h1></label>-->
+            <input type="text" data-ng-model="data.firstName"  onclick="select()" id="name-input"class="form-control" placeholder="Use the keyboard to type your name here (optional) and press ENTER when you are finished."  autofocus />
+        </div>
+        
+        <div class="form-group">
+            <label for="comment"><h1 data-ng-bind="data.question" class="question-title"></h1></label>
+            <textarea data-ng-model="data.comment"  id="comment-input" onclick="select()" class="form-control comment-box" rows="8" placeholder="Use the keyboard to type your answer. Press ENTER or touch the submit button to submit your response."></textarea>
+        </div>
+        <p data-ng-show="emptyComment" class="empty-comment">Please enter a comment</p>
+        <p data-ng-show="probAdding" class="empty-comment">Sorry - there was a problem adding your comment, please try again</p>
+        <button type="submit" class="btn btn-default submit-button" data-ng-click="addComment()">SUBMIT</button>
+
+    </form>
+
+    <div class="comments-inst">
+        <h4 class="comments-title">WHAT OTHERS THINK</h4>
+        <!--<h3 class="swipe-inst">Swipe up to see more</h3>-->
+    </div>
+
+    <img class="spinner" src="images/loading.gif" data-ng-show="loading" />
+    <p data-ng-show="noComments" class="no-comments">There are no comments yet</p>
+    <p data-ng-show="probComments" class="no-comments">Sorry - there was a problem getting the comments</p>
+    <div class="comments-spacer"></div>
+    <ul class="list-unstyled" data-comment-loader>
+        
+        <li data-ng-repeat="commentor in comments" id='comment-{{commentor.id}}' data-ng-show="commentor.visibility==1" class="comment-item">
+      
+            <div class="panel-body" >      
+                <!--<span class="comment-date" data-ng-bind="commentor.date"></span> handy for debugging -->
+                <h5 class="commentor" data-ng-bind="commentor.firstname"></h5>
+                <span class="comment" data-ng-bind="cleanComment(commentor.comment)"></span>
+
+            </div>
+
+        </li>
+
+    </ul>
+    <img class="spinner" src="images/loading.gif" data-ng-show="moreLoading" />
+    <div class="end-message" data-ng-show="showEnd" >- End -</div>
+    <div class="spacer"></div>
+    <!--<img class="arrow-up" data-ng-show="upArrow" src="images/up_arrow.jpg"></img>-->
+    <!--<img class="arrow-down" data-ng-show="downArrow" src="images/down_arrow.png"></img>-->
+
+    <img class="spinner" src="images/loading.gif" data-ng-show="lazyLoading" />
+
+</div>
+<div ng-include="'js/partials/footer.html'"></div>

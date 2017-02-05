@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "concat": "^1.0.0",
+    "concat-cli": "^1.0.1",
+    "minifier": "^0.7.0",
+    "replace": "^0.3.0",
+    "uglifyjs": "^2.4.10"
+  },
+  "scripts": {
+    "prebuild": "rm -r bin/*",
+    "build": "build.sh",
+    "env": "env"
+  }
+}

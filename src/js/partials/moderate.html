@@ -1,0 +1,42 @@
+<div class="moderate">
+<a class="mod-questions" href="#/mod">Back to questions</a>
+    <h1 data-ng-bind="data.question" ></h1>
+    <h3>Enter a search term or scroll down to view all comments for this question. Use the 'Hide' button to hide (but not delete) a comment form the public view.</h3>
+    <div class="form-group">
+        <input type="text" data-ng-model="data.searchTerm"  id="term-input"class="form-control" placeholder="Enter search term"  autofocus />
+        <button type="submit" class="btn btn-default" data-ng-click="search('firstname', true)">SEARCH BY NAME</button>
+        <button type="submit" class="btn btn-default" data-ng-click="search('comment', true)">SEARCH BY COMMENT</button>
+        <button type="submit" class="btn btn-default" data-ng-click="clear()">CLEAR</button>
+        <button type="submit" class="btn btn-default" data-ng-click="seeAllComments()">SEE ALL</button>
+    </div>
+
+    <h3>Comments</h3>
+
+    <img class="spinner" src="images/loading.gif" data-ng-show="loading" />
+    <p data-ng-show="noComments">There are no comments yet</p>
+    <p data-ng-show="noResults" class="no-results">No search results</p>
+    <p data-ng-show="probComments">There was a problem getting the comments</p>
+
+    <ul class="list-unstyled" data-comment-loader-moderate>
+        
+        <li data-ng-repeat="commentor in comments" id='comment-{{commentor.id}}' >
+      
+            <div class="panel panel-default" ng-class="{'comment-hidden': commentor.visibility == 0}" >
+              
+                <div class="panel-body" >
+                  
+                    <button type="submit" class="btn btn-default moderate-control" data-ng-click="toggleComment(commentor)" data-ng-bind="getButtonLabel(commentor.visibility)"></button>
+                    <span class="comment-date" data-ng-bind="commentor.date"></span>
+                    <h5 class="commentor" data-ng-bind="commentor.firstname"></h4>
+                    <span class="comment" data-ng-bind="cleanComment(commentor.comment)"></span>
+
+                </div>
+
+            </div>
+
+        </li>
+
+    </ul>
+    <img class="spinner" src="images/loading.gif" data-ng-show="lazyLoading" />
+    <div class="end-message" data-ng-show="showEnd" >- End of comments -</div>
+</div>

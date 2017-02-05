@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Comments proto</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+    </head>
+  
+    <body data-ng-app="commentApp" >
+    
+        
+        <div class="container-fluid" data-ng-controller="MainController">
+
+            <div data-ng-view></div>
+
+            <!-- overlays -->
+            <div class="terms-panel" data-ng-show="showTerms">
+                <div>The data we are collecting will be used to help us plan our new museum in Smithfield. Some of the findings of this evaluation may be shared with third parties such as the City of London Corporation and the Greater London Authority who are funding the new museum project. Once evaluation is complete, all raw data collected will be securely destroyed. The views expressed are the views of the public only and are not endorsed by the museum. Please note: your name will be displayed to other visitors next to any comments you make. If you wish to remain anonymous, please leave the name field blank.<button id="terms-ok" data-ng-click="toggleTermsPanel(0)">OK</button></div>
+            </div>
+            <button id="countdown" data-ng-show="showCountdown">          
+                <div class="circle-container"> 
+                    <div class="circle" data-ng-bind="countdown"></div>
+                    <div class="countdown-message"><span>Are you still there?</span><br/>Touch the screen to continue<br/>or wait to start again</div>
+                </div>
+            </button>
+            <!--end overlays -->
+            
+        </div>
+
+        <script src="js/libs/underscore-min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/factories/commentFactory.js"></script>
+        <script src="js/controllers/mainController.js"></script>
+        <script src="js/controllers/questionsController.js"></script>
+        <script src="js/controllers/commentController.js"></script>
+        <script src="js/controllers/moderateController.js"></script>
+        <script src="js/directives/formDirective.js"></script>
+        <script src="js/directives/loadDirective.js"></script>
+
+    </body>
+</html>
